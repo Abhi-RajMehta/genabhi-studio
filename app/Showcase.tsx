@@ -25,7 +25,7 @@ const projects = [
   },
   { 
     id: 4, 
-    title: 'Mythological_Battle', 
+    title: 'Mythological_Battle',
     desc: 'The Era of Shah Jahan & Taj Mahal.', 
     size: 'md:col-span-2',
     video: '/videos/Mythological_Battle.mp4'
