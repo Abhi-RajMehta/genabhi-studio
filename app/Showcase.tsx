@@ -7,7 +7,7 @@ const projects = [
     title: 'Krishna Mythology', 
     desc: 'Ancient stories, AI cinematic reality.', 
     size: 'md:col-span-2',
-    video: '/videos/krishna.mp4' // Public folder mein video hona chahiye
+    video: 'https://y49vpwc7x9kvahkz.public.blob.vercel-storage.com/krishna.mp4'
   },
  { 
     id: 2, 
@@ -22,7 +22,7 @@ const projects = [
     title: 'Digital Invites', 
     desc: 'Premium 3D Wedding Invitations.', 
     size: 'md:col-span-1',
-    video: '/videos/invite.mp4'
+    video: 'https://y49vpwc7x9kvahkz.public.blob.vercel-storage.com/invite.mp4'
   },
   { 
     id: 4, 
