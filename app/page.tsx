@@ -2,6 +2,7 @@
 import React, { useRef, Suspense, useMemo } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Points, PointMaterial, OrbitControls, Float } from '@react-three/drei'
+// @ts-ignore
 import * as random from 'maath/random/dist/maath-random.esm'
 import { motion } from 'framer-motion'
 
