@@ -1,5 +1,5 @@
 "use client"
-import React, { useRef, Suspense, useMemo } from 'react'
+import React, { useRef, Suspense, useMemo, useState, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Points, PointMaterial, OrbitControls, Float } from '@react-three/drei'
 // @ts-ignore
@@ -55,6 +55,14 @@ function ParticleSphere({ color }: { color: string }) {
 
 export default function Home() {
   const { currentTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  // Fix for Hydration Error in Next.js
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return <div className="bg-[#050505] h-screen w-full" />;
 
   return (
     <main className="h-screen w-full bg-[#050505] relative overflow-y-auto snap-y snap-mandatory scroll-smooth overflow-x-hidden">
@@ -64,21 +72,23 @@ export default function Home() {
       {/* 1. HERO SECTION & MAGIC CONSOLE */}
       <section id="hero" className="h-screen w-full relative flex items-center justify-center snap-start">
         <div className="absolute z-10 text-center px-4 w-full">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-8xl font-bold text-white tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-500 uppercase"
+            transition={{ duration: 1 }}
           >
-            GenAbhi Studio
-          </motion.h1>
-          <p className="text-blue-400 mt-6 tracking-[0.5em] md:tracking-[0.8em] text-[10px] md:text-xs uppercase font-medium">
-            AI Movies • Digital Arts • Cinematic Stories
-          </p>
+            <h1 className="text-5xl md:text-8xl font-bold text-white tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-500 uppercase">
+              GenAbhi Studio
+            </h1>
+            <p className="text-blue-400 mt-6 tracking-[0.5em] md:tracking-[0.8em] text-[10px] md:text-xs uppercase font-medium">
+              AI Movies • Digital Arts • Cinematic Stories
+            </p>
+          </motion.div>
 
           <MagicConsole />
         </div>
 
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 opacity-60">
           <Canvas camera={{ position: [0, 0, 1] }}>
             <Suspense fallback={null}>
               <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
@@ -90,21 +100,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. SHOWCASE SECTION */}
-      <section id="showcase" className="min-h-screen w-full snap-start">
+      {/* 2. SHOWCASE SECTION (Krishna, Mughal, Comedy videos here) */}
+      <section id="showcase" className="min-h-screen w-full snap-start bg-[#050505]">
         <Showcase />
       </section>
 
       {/* 3. THE LAB & TECH STACK */}
-      <section id="lab" className="min-h-screen w-full snap-start">
+      <section id="lab" className="min-h-screen w-full snap-start bg-[#080808]">
         <Lab />
       </section>
 
-      <section id="tools" className="min-h-screen w-full snap-start">
+      <section id="tools" className="min-h-screen w-full snap-start bg-[#050505]">
         <TechStack />
       </section>
 
-      {/* 4. UNIQUE SOCIAL HUB (Cinematic Slide) */}
+      {/* 4. UNIQUE SOCIAL HUB */}
       <section className="min-h-screen w-full snap-start flex flex-col items-center justify-center py-20 bg-[#050505] relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
         
@@ -125,7 +135,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. FINAL FOOTER (Copyright integrated here) */}
+      {/* 5. FINAL FOOTER */}
       <footer className="min-h-[70vh] w-full snap-start flex flex-col items-center justify-center bg-[#030303] border-t border-white/5 p-10 relative">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-24 text-center max-w-5xl w-full">
           <div>
@@ -146,7 +156,6 @@ export default function Home() {
           </div>
         </div>
         
-        {/* --- PROFESSIONAL COPYRIGHT SECTION --- */}
         <div className="text-center border-t border-white/5 pt-12 w-full max-w-2xl">
           <p className="text-gray-400 text-[10px] tracking-[0.6em] uppercase font-black mb-4">GenAbhi Studio</p>
           
