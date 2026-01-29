@@ -46,14 +46,17 @@ export default function Showcase() {
             >
               {/* Video Background - Automatic Play on Hover/Load */}
               <video 
-                autoPlay 
-                loop 
-                muted 
-                playsInline 
-                className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-80 transition-opacity duration-700"
-              >
-                <source src={project.video} type="video/mp4" />
-              </video>
+  key={project.video} // Force refresh on link change
+  autoPlay 
+  loop 
+  muted 
+  playsInline 
+  preload="metadata" // "auto" ki jagah "metadata" fast load hota hai
+  className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-700"
+  onLoadedData={(e) => (e.target as HTMLVideoElement).play()} // Forced Play logic
+>
+  <source src={project.video} type="video/mp4" />
+</video>
 
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90" />
