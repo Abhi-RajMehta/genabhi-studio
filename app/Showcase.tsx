@@ -9,12 +9,13 @@ const projects = [
     size: 'md:col-span-2',
     video: '/videos/krishna.mp4' // Public folder mein video hona chahiye
   },
-  { 
+ { 
     id: 2, 
     title: 'Comedy Skits', 
     desc: 'Mama cat & Kitten airplane adventures.', 
     size: 'md:col-span-1',
-    video: '/videos/comedy.mp4'
+    // Yahan apna naya link paste kiya
+    video: 'https://y49vpwc7x9kvahkz.public.blob.vercel-storage.com/comedy.mp4' 
   },
   { 
     id: 3, 
@@ -28,7 +29,7 @@ const projects = [
     title: 'Mythological_Battle',
     desc: 'The Era of Shah Jahan & Taj Mahal.', 
     size: 'md:col-span-2',
-    video: '/videos/Mythological_Battle.mp4'
+    video: 'https://y49vpwc7x9kvahkz.public.blob.vercel-storage.com/Mythological_Battle.mp4'
   },
 ]
 
